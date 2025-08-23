@@ -1,81 +1,44 @@
-# Appcarros app
+# Aplicação de Estudo - FastAPI com Consumo em JavaScript e SQLite
 
-## Run the app
+Este repositório contém uma aplicação simples desenvolvida para estudos com FastAPI como backend, consumo via JavaScript no frontend, e banco de dados SQLite (simulado aqui com lista em memória para fins didáticos). O foco é aprendizagem prática da integração entre backend e frontend, tratamento de dados e solução de problemas comuns como CORS.
 
-### uv
+---
 
-Run as a desktop app:
+## Tecnologias Utilizadas
 
-```
-uv run flet run
-```
+- **FastAPI**: Framework Python rápido para construção de APIs RESTful.
+- **JavaScript**: Consumo da API no frontend via Axios.
+- **SQLite**: Para persistência de dados (na aplicação real, aqui está simulado com lista em memória).
+- **CorsMiddleware** do FastAPI para permitir comunicação entre frontend e backend em origens diferentes.
 
-Run as a web app:
+---
 
-```
-uv run flet run --web
-```
+## Funcionalidades Principais
 
-### Poetry
+- API REST para gerenciamento de uma lista de carros, com operações:
+  - Listar todos os carros
+  - Adicionar novo carro (com ID gerado automaticamente)
+  - Consultar carro pelo ID
+  - Deletar carro pelo ID
+- Frontend simples em JavaScript para:
+  - Exibir lista de carros obtida do backend
+  - Formulário para cadastro de novos carros
+- Configuração CORS para permitir requisições do frontend hospedado em `http://127.0.0.1:5500`
 
-Install dependencies from `pyproject.toml`:
+---
 
-```
-poetry install
-```
+## Estrutura do Projeto
 
-Run as a desktop app:
+- `server.py` — Código do backend FastAPI:
+  - Definição do modelo `Car` com campos: id, model, year, price.
+  - Endpoints para CRUD básico na lista de carros.
+  - Configuração CORS para comunicação frontend-backend.
+  
+- `script.js` — Código frontend JavaScript:
+  - Função para carregar e renderizar a lista de carros.
+  - Função para enviar novos carros via formulário para o backend.
+  
+- HTML (não incluso aqui) que contém elementos:
+  - Lista para exibir carros (`id="lista_carros"`)
+  - Formulário para cadastrar carros (`id="form_car"`, com input `id="input_model_car"`)
 
-```
-poetry run flet run
-```
-
-Run as a web app:
-
-```
-poetry run flet run --web
-```
-
-For more details on running the app, refer to the [Getting Started Guide](https://flet.dev/docs/getting-started/).
-
-## Build the app
-
-### Android
-
-```
-flet build apk -v
-```
-
-For more details on building and signing `.apk` or `.aab`, refer to the [Android Packaging Guide](https://flet.dev/docs/publish/android/).
-
-### iOS 
-
-```
-flet build ipa -v
-```
-
-For more details on building and signing `.ipa`, refer to the [iOS Packaging Guide](https://flet.dev/docs/publish/ios/).
-
-### macOS
-
-```
-flet build macos -v
-```
-
-For more details on building macOS package, refer to the [macOS Packaging Guide](https://flet.dev/docs/publish/macos/).
-
-### Linux
-
-```
-flet build linux -v
-```
-
-For more details on building Linux package, refer to the [Linux Packaging Guide](https://flet.dev/docs/publish/linux/).
-
-### Windows
-
-```
-flet build windows -v
-```
-
-For more details on building Windows package, refer to the [Windows Packaging Guide](https://flet.dev/docs/publish/windows/).
